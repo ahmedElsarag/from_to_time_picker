@@ -52,10 +52,10 @@ class MColors {
   static const Color dividerColor = Color(0xFF414141);
   static const Color gray = Color(0xFFE7E8EA);
   static const Color gold = Color(0xFFdebc29);
-  static final Color starColor2 = Color(0x66e7bb4e);
-  static final Color mainColor50 = Color(0x225C1349);
-  static final Color mainColor70 = Color(0x105C1349);
-  static final lightBlack  = Color(0xff171717);
+  static const Color starColor2 = Color(0x66e7bb4e);
+  static const Color mainColor50 = Color(0x225C1349);
+  static const Color mainColor70 = Color(0x105C1349);
+  static const lightBlack  = Color(0xff171717);
   static const Color lucid = Color(0xFFF9FFFF);
 
   static const Color corn_flower = Color(0xffddfeff);
