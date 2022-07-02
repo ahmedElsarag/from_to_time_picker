@@ -1,7 +1,7 @@
 name: from_to_time_picker
 description: Simple duration time range picker that enable user pick start time and end time of day in both 24h and 12h format
 version: 1.0.0+1
-homepage:
+homepage: https://github.com/ahmedElsarag/from_to_time_picker
 
 environment:
   sdk: ">=2.17.3 <3.0.0"

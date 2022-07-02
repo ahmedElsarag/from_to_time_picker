@@ -3,37 +3,125 @@ import 'package:intl/intl.dart';
 import 'colors.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+///interactive from to hours picker
+///
+/// the returned result will be two 24h [TimeOfDay]
 class FromToTimePicker extends StatefulWidget {
+  /// return the two picked [TimeOfDay] values
+  ///
+  /// on user click on ok Button
   final Function(TimeOfDay, TimeOfDay)? onTab;
+
+  /// dismiss the dialog and has no returned value
   final Function? onCancelTab;
+
+  /// the header of the dialog
+  ///
+  /// can provide user with information or available time to pick
   final String? headerText;
+
+  /// the color of dialog header text
   final Color? headerTextColor;
-  final String? fromHeadline;
-  final String? toHeadline;
+
+  /// submit button text
   final String? doneText;
+
+  /// submit button text color
+  final Color? doneTextColor;
+
+  /// dismiss button text color
+  final Color? dismissTextColor;
+
+  ///  dismiss button text
   final String? dismissText;
+
+  ///  day text of both from to time  picker
+  ///
+  /// by default it must be 'AM'
+  ///
+  /// pass any text you want to localize it
   final String? dayText;
+
+  /// the night text of both from to time picker
+  ///
+  /// by default it must be 'PM'
+  ///
+  /// pass any text you want to localize it
   final String? nightText;
+
+  /// the default viewed text in time picker
+  ///
+  /// by default it contains '00'
   final String? timeHintText;
+
+  /// the text above the first time picker
+  final String? fromHeadline;
+
+  /// the text above second time picker
+  final String? toHeadline;
+
+  /// color of text above the first time picker
   final Color? fromHeadlineColor;
+
+  /// color of text above the first time picker
   final Color? toHeadlineColor;
+
+  /// background color of Active 'AM','PM' box
   final Color? activeDayNightColor;
+
+  /// background color of deactivated 'AM','PM' box
   final Color? defaultDayNightColor;
+
+  /// text color of Active 'AM','PM' box
   final Color? activeDayNightTextColor;
+
+  /// text color of deactivated 'AM','PM' box
   final Color? defaultDayNightTextColor;
+
+  ///border radius of 'AM','PM' box
   final double? dayNightBorderRadius;
+
+  ///border radius of time picker
   final double? timeBoxBorderRadius;
+
+  /// background color of time picker
   final Color? timeBoxColor;
+
+  /// background color of the dialog
   final Color? dialogBackgroundColor;
+
+  /// icon of increasing time button
   final IconData? upIcon;
+
+  /// icon of decreasing time button
   final IconData? downIcon;
+
+  /// icon color of increasing time button
   final Color? upIconColor;
+
+  /// icon color of decreasing time button
   final Color? downIconColor;
+
+  /// color of the vertical divider between 'increasing and decreasing buttons' and 'the time text'
   final Color? dividerColor;
+
+  /// color of default shown text in time box
   final Color? timeHintColor;
+
+  /// color of picked hour text
   final Color? timeTextColor;
+
+  /// show circular bullet before the dialog header
+  ///
+  /// can be used to show available or unavailable time to user
   final bool? showHeaderBullet;
+
+  ///color of circular bullet before the dialog header
+  ///
+  /// for best practice use green color for available and red for unavailable time
   final Color? headerBulletColor;
+
+  /// color of two dots separates between two time picker box
   final Color? colonColor;
 
   const FromToTimePicker(
@@ -41,8 +129,8 @@ class FromToTimePicker extends StatefulWidget {
       required this.onTab,
       this.onCancelTab,
       this.headerText,
-      this.fromHeadline = 'from',
-      this.toHeadline = 'to',
+      this.fromHeadline = 'From',
+      this.toHeadline = 'To',
       this.fromHeadlineColor = MColors.black,
       this.toHeadlineColor = MColors.black,
       this.activeDayNightColor = MColors.primary_color,
@@ -67,7 +155,10 @@ class FromToTimePicker extends StatefulWidget {
       this.showHeaderBullet = false,
       this.headerBulletColor = MColors.green_1,
       this.headerTextColor = MColors.gray_9a,
-      this.colonColor = MColors.black, this.timeHintText = '00'})
+      this.colonColor = MColors.black,
+      this.timeHintText = '00',
+      this.doneTextColor = MColors.black,
+      this.dismissTextColor = MColors.black})
       : super(key: key);
 
   @override
@@ -92,8 +183,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
         children: [
           Container(
             height: widget.headerText != null
-                ? MediaQuery.of(context).size.height * .30
-                : MediaQuery.of(context).size.height * .28,
+                ? MediaQuery.of(context).size.height * .26
+                : MediaQuery.of(context).size.height * .24,
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
                 color: widget.dialogBackgroundColor,
@@ -124,7 +215,7 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                       Text(
                         '${widget.headerText}',
                         style: TextStyle(
-                            fontSize: 10, color: widget.headerTextColor),
+                            fontSize: 12, color: widget.headerTextColor),
                       )
                     ],
                   ),
@@ -135,7 +226,6 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                 Center(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    // crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.min,
@@ -146,7 +236,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                             width: MediaQuery.of(context).size.width * .04,
                           ),
                           Container(
-                            height: MediaQuery.of(context).size.height * .16,
+                            padding: EdgeInsetsDirectional.only(top: MediaQuery.of(context).size.height * .02),
+                            height: MediaQuery.of(context).size.height * .12,
                             alignment: Alignment.center,
                             child: Text(
                               ':',
@@ -179,7 +270,7 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                         widget.onCancelTab;
                         Navigator.pop(context);
                       },
-                      child: Text(widget.dismissText!)),
+                      child: Text(widget.dismissText!,style: TextStyle(color: widget.dismissTextColor,fontSize: 16),)),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .06,
                   ),
@@ -189,11 +280,10 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                             generate24HTime(
                                 isAmFrom, timePickerStartTime.toString()),
                             generate24HTime(
-                                isAmTo, timePickerEndTime.toString())
-                        );
+                                isAmTo, timePickerEndTime.toString()));
                         Navigator.pop(context);
                       },
-                      child: Text(widget.doneText!)),
+                      child: Text(widget.doneText!,style: TextStyle(color: widget.doneTextColor, fontSize: 16),)),
                 ],
               ))
         ],
@@ -201,6 +291,9 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
     );
   }
 
+  /// the from time part of the dialog
+  ///
+  /// contains two arrows, day night box, and time box
   Widget fromTimeItem(String headline) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,7 +301,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
       children: [
         Text(
           headline,
-          style: TextStyle(color: widget.fromHeadlineColor, fontWeight: FontWeight.w600),
+          style: TextStyle(
+              color: widget.fromHeadlineColor, fontWeight: FontWeight.w600),
         ),
         SizedBox(
           height: MediaQuery.of(context).size.height * .01,
@@ -236,13 +330,15 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * .07,
-                    height: MediaQuery.of(context).size.width * .07,
+                    height: MediaQuery.of(context).size.height * .038,
                     alignment: Alignment.center,
                     child: FittedBox(
                       child: Text(
                         widget.dayText!,
                         style: TextStyle(
-                            color: isAmFrom ? widget.activeDayNightTextColor : widget.defaultDayNightTextColor,
+                            color: isAmFrom
+                                ? widget.activeDayNightTextColor
+                                : widget.defaultDayNightTextColor,
                             fontSize: 10),
                       ),
                     ),
@@ -251,12 +347,14 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                             ? widget.activeDayNightColor
                             : widget.defaultDayNightColor,
                         borderRadius: BorderRadiusDirectional.only(
-                            topStart: Radius.circular(widget.dayNightBorderRadius!),
-                            topEnd: Radius.circular(widget.dayNightBorderRadius!))),
+                            topStart:
+                                Radius.circular(widget.dayNightBorderRadius!),
+                            topEnd:
+                                Radius.circular(widget.dayNightBorderRadius!))),
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * .01,
+                  height: MediaQuery.of(context).size.height * .005,
                 ),
                 InkWell(
                   onTap: () {
@@ -269,13 +367,15 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * .07,
-                    height: MediaQuery.of(context).size.width * .07,
+                    height: MediaQuery.of(context).size.height * .038,
                     alignment: Alignment.center,
                     child: FittedBox(
                       child: Text(
                         widget.nightText!,
                         style: TextStyle(
-                            color: isAmFrom ? widget.defaultDayNightTextColor : widget.activeDayNightTextColor,
+                            color: isAmFrom
+                                ? widget.defaultDayNightTextColor
+                                : widget.activeDayNightTextColor,
                             fontSize: 10),
                       ),
                     ),
@@ -284,8 +384,10 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                             ? widget.defaultDayNightColor
                             : widget.activeDayNightColor,
                         borderRadius: BorderRadiusDirectional.only(
-                            bottomEnd: Radius.circular(widget.dayNightBorderRadius!),
-                            bottomStart: Radius.circular(widget.dayNightBorderRadius!))),
+                            bottomEnd:
+                                Radius.circular(widget.dayNightBorderRadius!),
+                            bottomStart:
+                                Radius.circular(widget.dayNightBorderRadius!))),
                   ),
                 )
               ],
@@ -296,6 +398,9 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
     );
   }
 
+  /// the to time part of the dialog
+  ///
+  /// contains two arrows, day night box, and time box
   Widget toTimeItem(String headline) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -303,7 +408,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
       children: [
         Text(
           headline,
-          style: TextStyle(color:widget.toHeadlineColor, fontWeight: FontWeight.w600),
+          style: TextStyle(
+              color: widget.toHeadlineColor, fontWeight: FontWeight.w600),
         ),
         SizedBox(
           height: MediaQuery.of(context).size.height * .01,
@@ -331,13 +437,15 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * .07,
-                    height: MediaQuery.of(context).size.width * .07,
+                    height:  MediaQuery.of(context).size.height * .038,
                     alignment: Alignment.center,
                     child: FittedBox(
                       child: Text(
                         widget.dayText!,
                         style: TextStyle(
-                            color: isAmTo ? widget.activeDayNightTextColor :widget.defaultDayNightTextColor,
+                            color: isAmTo
+                                ? widget.activeDayNightTextColor
+                                : widget.defaultDayNightTextColor,
                             fontSize: 10),
                       ),
                     ),
@@ -346,30 +454,34 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                             ? widget.activeDayNightColor
                             : widget.defaultDayNightColor,
                         borderRadius: BorderRadiusDirectional.only(
-                            topStart: Radius.circular(widget.dayNightBorderRadius!),
-                            topEnd: Radius.circular(widget.dayNightBorderRadius!))),
+                            topStart:
+                                Radius.circular(widget.dayNightBorderRadius!),
+                            topEnd:
+                                Radius.circular(widget.dayNightBorderRadius!))),
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * .01,
+                  height: MediaQuery.of(context).size.height * .005,
                 ),
                 InkWell(
                   onTap: () {
                     setState(() {
                       isAmTo = false;
-                      toTime = generate24HTime(
-                          isAmTo, timePickerEndTime.toString());
+                      toTime =
+                          generate24HTime(isAmTo, timePickerEndTime.toString());
                     });
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * .07,
-                    height: MediaQuery.of(context).size.width * .07,
+                    height:  MediaQuery.of(context).size.height * .038,
                     alignment: Alignment.center,
                     child: FittedBox(
                       child: Text(
                         widget.nightText!,
                         style: TextStyle(
-                            color: isAmTo ? widget.defaultDayNightTextColor : widget.activeDayNightTextColor,
+                            color: isAmTo
+                                ? widget.defaultDayNightTextColor
+                                : widget.activeDayNightTextColor,
                             fontSize: 10),
                       ),
                     ),
@@ -378,8 +490,10 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                             ? widget.defaultDayNightColor
                             : widget.activeDayNightColor,
                         borderRadius: BorderRadiusDirectional.only(
-                            bottomEnd: Radius.circular(widget.dayNightBorderRadius!),
-                            bottomStart: Radius.circular(widget.dayNightBorderRadius!))),
+                            bottomEnd:
+                                Radius.circular(widget.dayNightBorderRadius!),
+                            bottomStart:
+                                Radius.circular(widget.dayNightBorderRadius!))),
                   ),
                 )
               ],
@@ -390,6 +504,7 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
     );
   }
 
+  /// from time box that contain arrows and picked hour text
   Widget fromTimePicker() {
     return Container(
       width: MediaQuery.of(context).size.width * .20,
@@ -423,7 +538,10 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width * .06,
-                      child: Icon(widget.upIcon, color: widget.upIconColor,),
+                      child: Icon(
+                        widget.upIcon,
+                        color: widget.upIconColor,
+                      ),
                     ),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * .01),
@@ -439,7 +557,10 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width * .06,
-                      child: Icon(widget.downIcon, color: widget.downIconColor,),
+                      child: Icon(
+                        widget.downIcon,
+                        color: widget.downIconColor,
+                      ),
                     ),
                   ),
                 ],
@@ -477,6 +598,7 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
     );
   }
 
+  /// to time box that contain arrows and picked hour text
   Widget toTimePicker() {
     return Container(
       width: MediaQuery.of(context).size.width * .20,
@@ -510,7 +632,10 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width * .06,
-                      child: Icon(widget.upIcon,color: widget.upIconColor,),
+                      child: Icon(
+                        widget.upIcon,
+                        color: widget.upIconColor,
+                      ),
                     ),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * .01),
@@ -526,7 +651,10 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width * .06,
-                      child: Icon(widget.downIcon, color: widget.downIconColor,),
+                      child: Icon(
+                        widget.downIcon,
+                        color: widget.downIconColor,
+                      ),
                     ),
                   ),
                 ],
@@ -548,7 +676,9 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                 width: MediaQuery.of(context).size.width * .10,
                 alignment: Alignment.center,
                 child: Text(
-                  timePickerEndTime == 0 ? widget.timeHintText! : timePickerEndTime.toString(),
+                  timePickerEndTime == 0
+                      ? widget.timeHintText!
+                      : timePickerEndTime.toString(),
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
@@ -562,6 +692,7 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
     );
   }
 
+  ///convert time from 12h to 24h format
   TimeOfDay generate24HTime(bool isAm, String hour) {
     initializeDateFormatting();
     DateTime date =
