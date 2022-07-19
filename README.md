@@ -74,10 +74,10 @@ showDialog(
 
 We accept the following contribution:
 
-*Improving documentation
-*Reporting issues
-*fixing bugs
+* Improving documentation
+* Reporting issues
+* fixing bugs
 
 ##Maintainer
 
-*Ahmed Elsarag
+* Ahmed Elsarag
