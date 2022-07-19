@@ -1,7 +1,8 @@
 # From To Time Picker
 
-[![pub package](https://img.shields.io/pub/v/logger.svg?logo=dart&logoColor=00b9fc)](https://pub.dartlang.org/packages/from_to_time_picker)
+![Pub Version](https://img.shields.io/pub/v/from_to_time_picker)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ahmedElsarag/from_to_time_picker)
 
 Simple interactive time range picker that enables users to pick a specific duration of the day by selecting start time and end time and defining whether it was AM or PM then it returns the duration chosen in 24H format.
 
@@ -15,7 +16,7 @@ In the pubspec.yaml of your flutter project, add the following dependency:
 ```dart
 dependencies:
 ...
-from_to_time_picker: ^1.0.0+1
+from_to_time_picker: ^1.0.0
 ```
 
 In your library add the following import:
