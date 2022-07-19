@@ -3,7 +3,6 @@
 Simple interactive time range picker that enables users to pick a specific duration of the day by selecting start time and end time and defining whether it was AM or PM then it returns the duration chosen in 24H format.
 
 ![time_picker_gif](light_time_picker.gif)
-
 ![time_picker_gif](dark_time_picker.gif)
 ## Features
 
