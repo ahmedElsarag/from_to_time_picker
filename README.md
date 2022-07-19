@@ -8,10 +8,22 @@ Simple interactive time range picker that enables users to pick a specific durat
 
 TODO: List what your package can do. Maybe include images, gifs, or videos.
 
-## Getting started
+## Usage
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+In the pubspec.yaml of your flutter project, add the following dependency:
+
+```dart
+dependencies:
+...
+from_to_time_picker: ^1.0.0+1
+```
+
+In your library add the following import:
+
+```dart
+import 'package:from_to_time_picker/from_to_time_picker.dart';
+```
+
 
 
 ## Example
@@ -55,16 +67,6 @@ showDialog(
         headerText: 'Time available from 01:00 AM to 11:00 PM',
       ),
     );
-```
-
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
 ```
 
 ## Additional information
