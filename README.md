@@ -1,6 +1,7 @@
 # From To Time Picker
 
 ![Pub Version](https://img.shields.io/pub/v/from_to_time_picker)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Simple interactive time range picker that enables users to pick a specific duration of the day by selecting start time and end time and defining whether it was AM or PM then it returns the duration chosen in 24H format.
 
