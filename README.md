@@ -14,6 +14,51 @@ TODO: List what your package can do. Maybe include images, gifs, or videos.
 TODO: List prerequisites and provide or point to information on how to
 start using the package.
 
+
+## Example
+
+default mode
+```dart
+
+showDialog(
+        context: context,
+        builder: (_) => FromToTimePicker(
+              onTab: (from, to) {
+                print('from $from to $to');
+              },
+            ));
+
+```
+
+customized mode 
+```dart
+showDialog(
+      context: context,
+      builder: (_) => FromToTimePicker(
+        onTab: (from, to) {
+          print('from $from to $to');
+        },
+        dialogBackgroundColor: Color(0xFF121212),
+        fromHeadlineColor: Colors.white,
+        toHeadlineColor: Colors.white,
+        upIconColor: Colors.white,
+        downIconColor: Colors.white,
+        timeBoxColor: Color(0xFF1E1E1E),
+        timeHintColor: Colors.grey,
+        timeTextColor: Colors.white,
+        dividerColor: Color(0xFF121212),
+        doneTextColor: Colors.white,
+        dismissTextColor: Colors.white,
+        defaultDayNightColor: Color(0xFF1E1E1E),
+        defaultDayNightTextColor: Colors.white,
+        colonColor: Colors.white,
+        showHeaderBullet: true,
+        headerText: 'Time available from 01:00 AM to 11:00 PM',
+      ),
+    );
+```
+
+
 ## Usage
 
 TODO: Include short and useful examples for package users. Add longer examples

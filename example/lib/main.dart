@@ -33,13 +33,10 @@ class _MyHomePageState extends State<MyHomePage> {
   void showLightTimePicker() {
     showDialog(
         context: context,
-        builder: (_) => FromToTimePicker(onTab: (from, to) {
-              print('from $from to $to');
-
-            },
-          showHeaderBullet: true,
-          headerText: 'Time available from 01:00 AM to 11:00 PM',
-
+        builder: (_) => FromToTimePicker(
+              onTab: (from, to) {
+                print('from $from to $to');
+              },
             ));
   }
 
@@ -66,7 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
         colonColor: Colors.white,
         showHeaderBullet: true,
         headerText: 'Time available from 01:00 AM to 11:00 PM',
-
       ),
     );
   }
