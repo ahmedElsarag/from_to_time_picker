@@ -78,6 +78,6 @@ We accept the following contribution:
 * Reporting issues
 * fixing bugs
 
-##Maintainer
+## Maintainer
 
 * Ahmed Elsarag
