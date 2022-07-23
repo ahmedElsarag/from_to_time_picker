@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'colors.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:flutter/foundation.dart';
 
 ///interactive from to hours picker
 ///
@@ -183,7 +184,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
         children: [
           Container(
             height: widget.headerText != null
-                ? MediaQuery.of(context).size.height * .26
+                ? MediaQuery.of(context).size.height *
+                    (isNotMobile() ? 0.33 : 0.26)
                 : MediaQuery.of(context).size.height * .24,
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
@@ -236,7 +238,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                             width: MediaQuery.of(context).size.width * .04,
                           ),
                           Container(
-                            padding: EdgeInsetsDirectional.only(top: MediaQuery.of(context).size.height * .02),
+                            padding: EdgeInsetsDirectional.only(
+                                top: MediaQuery.of(context).size.height * .02),
                             height: MediaQuery.of(context).size.height * .12,
                             alignment: Alignment.center,
                             child: Text(
@@ -261,7 +264,7 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
           ),
           PositionedDirectional(
               end: 20,
-              bottom: 20,
+              bottom: 10,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -270,7 +273,11 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                         widget.onCancelTab;
                         Navigator.pop(context);
                       },
-                      child: Text(widget.dismissText!,style: TextStyle(color: widget.dismissTextColor,fontSize: 16),)),
+                      child: Text(
+                        widget.dismissText!,
+                        style: TextStyle(
+                            color: widget.dismissTextColor, fontSize: 16),
+                      )),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .06,
                   ),
@@ -283,7 +290,11 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                                 isAmTo, timePickerEndTime.toString()));
                         Navigator.pop(context);
                       },
-                      child: Text(widget.doneText!,style: TextStyle(color: widget.doneTextColor, fontSize: 16),)),
+                      child: Text(
+                        widget.doneText!,
+                        style: TextStyle(
+                            color: widget.doneTextColor, fontSize: 16),
+                      )),
                 ],
               ))
         ],
@@ -437,7 +448,7 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * .07,
-                    height:  MediaQuery.of(context).size.height * .038,
+                    height: MediaQuery.of(context).size.height * .038,
                     alignment: Alignment.center,
                     child: FittedBox(
                       child: Text(
@@ -473,7 +484,7 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * .07,
-                    height:  MediaQuery.of(context).size.height * .038,
+                    height: MediaQuery.of(context).size.height * .038,
                     alignment: Alignment.center,
                     child: FittedBox(
                       child: Text(
@@ -697,6 +708,13 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
     initializeDateFormatting();
     DateTime date =
         DateFormat("hh:mma", 'en').parse("$hour:00${isAm ? 'AM' : 'PM'}");
+
     return TimeOfDay.fromDateTime(date);
+  }
+
+  ///check platform
+  bool isNotMobile() {
+    return defaultTargetPlatform == TargetPlatform.linux
+        || defaultTargetPlatform == TargetPlatform.macOS || defaultTargetPlatform == TargetPlatform.windows;
   }
 }
