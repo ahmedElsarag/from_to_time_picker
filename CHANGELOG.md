@@ -1,3 +1,7 @@
+##1.0.4
+
+* remove unnecessary methods(onCancelTab) and statements
+
 ##1.0.3
 
 * support lower version of flutter sdk

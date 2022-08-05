@@ -13,9 +13,6 @@ class FromToTimePicker extends StatefulWidget {
   /// on user click on ok Button
   final Function(TimeOfDay, TimeOfDay)? onTab;
 
-  /// dismiss the dialog and has no returned value
-  final Function? onCancelTab;
-
   /// the header of the dialog
   ///
   /// can provide user with information or available time to pick
@@ -128,7 +125,6 @@ class FromToTimePicker extends StatefulWidget {
   const FromToTimePicker(
       {Key? key,
       required this.onTab,
-      this.onCancelTab,
       this.headerText,
       this.fromHeadline = 'From',
       this.toHeadline = 'To',
@@ -270,7 +266,6 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                 children: [
                   InkWell(
                       onTap: () {
-                        widget.onCancelTab;
                         Navigator.pop(context);
                       },
                       child: Text(
@@ -439,8 +434,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                   onTap: () {
                     setState(() {
                       isAmTo = true;
-                      toTime = generate24HTime(
-                          isAmTo, timePickerEndTime.toString());
+                      toTime =
+                          generate24HTime(isAmTo, timePickerEndTime.toString());
                     });
                   },
                   child: Container(
@@ -711,7 +706,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
 
   ///check platform
   bool isNotMobile() {
-    return defaultTargetPlatform == TargetPlatform.linux
-        || defaultTargetPlatform == TargetPlatform.macOS || defaultTargetPlatform == TargetPlatform.windows;
+    return defaultTargetPlatform == TargetPlatform.linux ||
+        defaultTargetPlatform == TargetPlatform.macOS ||
+        defaultTargetPlatform == TargetPlatform.windows;
   }
 }
