@@ -334,9 +334,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                   onTap: () {
                     setState(() {
                       isAmFrom = true;
-                      if (timePickerStartTime != null)
-                        fromTime = generate24HTime(
-                            isAmFrom, timePickerStartTime.toString());
+                      fromTime = generate24HTime(
+                          isAmFrom, timePickerStartTime.toString());
                     });
                   },
                   child: Container(
@@ -371,9 +370,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                   onTap: () {
                     setState(() {
                       isAmFrom = false;
-                      if (timePickerStartTime != null)
-                        fromTime = generate24HTime(
-                            isAmFrom, timePickerStartTime.toString());
+                      fromTime = generate24HTime(
+                          isAmFrom, timePickerStartTime.toString());
                     });
                   },
                   child: Container(
@@ -441,9 +439,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                   onTap: () {
                     setState(() {
                       isAmTo = true;
-                      if (timePickerEndTime != null)
-                        toTime = generate24HTime(
-                            isAmTo, timePickerEndTime.toString());
+                      toTime = generate24HTime(
+                          isAmTo, timePickerEndTime.toString());
                     });
                   },
                   child: Container(

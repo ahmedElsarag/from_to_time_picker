@@ -1,3 +1,7 @@
+##1.0.3
+
+* support lower version of flutter sdk
+
 ## 1.0.2
 
 *  update version number in readme
