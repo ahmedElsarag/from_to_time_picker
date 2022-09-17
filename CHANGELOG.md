@@ -1,3 +1,7 @@
+## 1.1.0
+
+* add some animation on hour change, and add ripple effect to up and down arrow 
+
 ## 1.0.5
 
 * update CHANGELOG

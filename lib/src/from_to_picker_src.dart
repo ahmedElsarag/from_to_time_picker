@@ -529,40 +529,50 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  InkWell(
-                    onTap: () {
-                      if (timePickerStartTime < 12) {
-                        setState(() {
-                          timePickerStartTime++;
-                          fromTime = generate24HTime(
-                              isAmFrom, timePickerStartTime.toString());
-                        });
-                      }
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * .06,
-                      child: Icon(
-                        widget.upIcon,
-                        color: widget.upIconColor,
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      highlightColor: MColors.primary_color.withOpacity(.2),
+                      borderRadius: BorderRadius.circular(20),
+                      onTap: () {
+                        if (timePickerStartTime < 12) {
+                          setState(() {
+                            timePickerStartTime++;
+                            fromTime = generate24HTime(
+                                isAmFrom, timePickerStartTime.toString());
+                          });
+                        }
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * .06,
+                        child: Icon(
+                          widget.upIcon,
+                          color: widget.upIconColor,
+                        ),
                       ),
                     ),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * .01),
-                  InkWell(
-                    onTap: () {
-                      if (timePickerStartTime > 1) {
-                        setState(() {
-                          timePickerStartTime--;
-                          fromTime = generate24HTime(
-                              isAmFrom, timePickerStartTime.toString());
-                        });
-                      }
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * .06,
-                      child: Icon(
-                        widget.downIcon,
-                        color: widget.downIconColor,
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      highlightColor: MColors.primary_color.withOpacity(.2),
+                      borderRadius: BorderRadius.circular(20),
+                      onTap: () {
+                        if (timePickerStartTime > 1) {
+                          setState(() {
+                            timePickerStartTime--;
+                            fromTime = generate24HTime(
+                                isAmFrom, timePickerStartTime.toString());
+                          });
+                        }
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * .06,
+                        child: Icon(
+                          widget.downIcon,
+                          color: widget.downIconColor,
+                        ),
                       ),
                     ),
                   ),
@@ -584,16 +594,23 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
             Container(
               width: MediaQuery.of(context).size.width * .10,
               alignment: Alignment.center,
-              child: Text(
-                  timePickerStartTime == 0
-                      ? widget.timeHintText!
-                      : timePickerStartTime.toString(),
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: timePickerStartTime == 0
-                          ? widget.timeHintColor
-                          : widget.timeTextColor)),
+              child: AnimatedSwitcher(
+                duration: Duration(milliseconds: 300),
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return ScaleTransition(scale: animation, child: child);
+                },
+                child: Text(
+                    timePickerStartTime == 0
+                        ? widget.timeHintText!
+                        : timePickerStartTime.toString(),
+                    key:ValueKey<String>(timePickerStartTime.toString()),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: timePickerStartTime == 0
+                            ? widget.timeHintColor
+                            : widget.timeTextColor)),
+              ),
             )
           ],
         ),
@@ -623,40 +640,50 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  InkWell(
-                    onTap: () {
-                      if (timePickerEndTime < 12) {
-                        setState(() {
-                          timePickerEndTime++;
-                          toTime = generate24HTime(
-                              isAmTo, timePickerEndTime.toString());
-                        });
-                      }
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * .06,
-                      child: Icon(
-                        widget.upIcon,
-                        color: widget.upIconColor,
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      highlightColor: MColors.primary_color.withOpacity(.2),
+                      borderRadius: BorderRadius.circular(20),
+                      onTap: () {
+                        if (timePickerEndTime < 12) {
+                          setState(() {
+                            timePickerEndTime++;
+                            toTime = generate24HTime(
+                                isAmTo, timePickerEndTime.toString());
+                          });
+                        }
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * .06,
+                        child: Icon(
+                          widget.upIcon,
+                          color: widget.upIconColor,
+                        ),
                       ),
                     ),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * .01),
-                  InkWell(
-                    onTap: () {
-                      if (timePickerEndTime > 1) {
-                        setState(() {
-                          timePickerEndTime--;
-                          toTime = generate24HTime(
-                              isAmTo, timePickerEndTime.toString());
-                        });
-                      }
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * .06,
-                      child: Icon(
-                        widget.downIcon,
-                        color: widget.downIconColor,
+                  Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      highlightColor: MColors.primary_color.withOpacity(.2),
+                      borderRadius: BorderRadius.circular(20),
+                      onTap: () {
+                        if (timePickerEndTime > 1) {
+                          setState(() {
+                            timePickerEndTime--;
+                            toTime = generate24HTime(
+                                isAmTo, timePickerEndTime.toString());
+                          });
+                        }
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * .06,
+                        child: Icon(
+                          widget.downIcon,
+                          color: widget.downIconColor,
+                        ),
                       ),
                     ),
                   ),
@@ -678,16 +705,23 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
             Container(
                 width: MediaQuery.of(context).size.width * .10,
                 alignment: Alignment.center,
-                child: Text(
-                  timePickerEndTime == 0
-                      ? widget.timeHintText!
-                      : timePickerEndTime.toString(),
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: timePickerEndTime == 0
-                          ? widget.timeHintColor
-                          : widget.timeTextColor),
+                child: AnimatedSwitcher(
+                  duration: Duration(milliseconds: 300),
+                  transitionBuilder: (Widget child, Animation<double> animation) {
+                    return ScaleTransition(scale: animation, child: child);
+                  },
+                  child: Text(
+                    timePickerEndTime == 0
+                        ? widget.timeHintText!
+                        : timePickerEndTime.toString(),
+                    key: ValueKey<String>(timePickerEndTime.toString()),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: timePickerEndTime == 0
+                            ? widget.timeHintColor
+                            : widget.timeTextColor),
+                  ),
                 ))
           ],
         ),

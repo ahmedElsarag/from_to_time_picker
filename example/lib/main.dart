@@ -30,12 +30,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+   String startTime = 'from';
+   String endTime = 'to'
+       '';
+
   void showLightTimePicker() {
     showDialog(
         context: context,
         builder: (_) => FromToTimePicker(
               onTab: (from, to) {
                 print('from $from to $to');
+                setState(() {
+                  startTime = from.hour.toString();
+                  endTime = to.hour.toString();
+                });
+
               },
             ));
   }
@@ -46,6 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
       builder: (_) => FromToTimePicker(
         onTab: (from, to) {
           print('from $from to $to');
+          setState(() {
+            startTime = from.hour.toString();
+            endTime = to.hour.toString();
+          });
         },
         dialogBackgroundColor: Color(0xFF121212),
         fromHeadlineColor: Colors.white,
@@ -77,6 +91,10 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            Text('selected duration'),
+            SizedBox(height: 10,),
+            Text('$startTime - $endTime'),
+            SizedBox(height: 40,),
             ElevatedButton(
                 onPressed: () => showLightTimePicker(),
                 child: Text(' show light time picker')),
