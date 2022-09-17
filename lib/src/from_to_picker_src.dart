@@ -603,7 +603,7 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                     timePickerStartTime == 0
                         ? widget.timeHintText!
                         : timePickerStartTime.toString(),
-                    key:ValueKey<String>(timePickerStartTime.toString()),
+                    key: ValueKey<String>(timePickerStartTime.toString()),
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
@@ -707,7 +707,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                 alignment: Alignment.center,
                 child: AnimatedSwitcher(
                   duration: Duration(milliseconds: 300),
-                  transitionBuilder: (Widget child, Animation<double> animation) {
+                  transitionBuilder:
+                      (Widget child, Animation<double> animation) {
                     return ScaleTransition(scale: animation, child: child);
                   },
                   child: Text(

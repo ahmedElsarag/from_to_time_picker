@@ -30,10 +30,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-   String startTime = 'from';
-   String endTime = 'to'
-       '';
+  String startTime = 'from';
+  String endTime = 'to'
+      '';
 
   void showLightTimePicker() {
     showDialog(
@@ -45,7 +44,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   startTime = from.hour.toString();
                   endTime = to.hour.toString();
                 });
-
               },
             ));
   }
@@ -92,9 +90,13 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text('selected duration'),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Text('$startTime - $endTime'),
-            SizedBox(height: 40,),
+            SizedBox(
+              height: 40,
+            ),
             ElevatedButton(
                 onPressed: () => showLightTimePicker(),
                 child: Text(' show light time picker')),
