@@ -282,8 +282,7 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                             generate24HTime(
                                 isAmFrom, timePickerStartTime.toString()),
                             generate24HTime(
-                                isAmTo, timePickerEndTime.toString()));
-                        Navigator.pop(context);
+                                isAmTo, timePickerEndTime.toString()));                        
                       },
                       child: Text(
                         widget.doneText!,

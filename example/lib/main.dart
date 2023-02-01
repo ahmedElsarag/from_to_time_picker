@@ -44,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   startTime = from.hour.toString();
                   endTime = to.hour.toString();
                 });
+                Navigator.pop(context);
               },
             ));
   }
@@ -58,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
             startTime = from.hour.toString();
             endTime = to.hour.toString();
           });
+          Navigator.pop(context);
         },
         dialogBackgroundColor: Color(0xFF121212),
         fromHeadlineColor: Colors.white,
