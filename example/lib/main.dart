@@ -38,12 +38,14 @@ class _MyHomePageState extends State<MyHomePage> {
     showDialog(
         context: context,
         builder: (_) => FromToTimePicker(
+              maxWidth: 600,
               onTab: (from, to) {
                 print('from $from to $to');
                 setState(() {
                   startTime = from.hour.toString();
                   endTime = to.hour.toString();
                 });
+                Navigator.pop(context);
               },
             ));
   }
@@ -58,19 +60,20 @@ class _MyHomePageState extends State<MyHomePage> {
             startTime = from.hour.toString();
             endTime = to.hour.toString();
           });
+          Navigator.pop(context);
         },
-        dialogBackgroundColor: Color(0xFF121212),
+        dialogBackgroundColor: const Color(0xFF121212),
         fromHeadlineColor: Colors.white,
         toHeadlineColor: Colors.white,
         upIconColor: Colors.white,
         downIconColor: Colors.white,
-        timeBoxColor: Color(0xFF1E1E1E),
+        timeBoxColor: const Color(0xFF1E1E1E),
         timeHintColor: Colors.grey,
         timeTextColor: Colors.white,
-        dividerColor: Color(0xFF121212),
+        dividerColor: const Color(0xFF121212),
         doneTextColor: Colors.white,
         dismissTextColor: Colors.white,
-        defaultDayNightColor: Color(0xFF1E1E1E),
+        defaultDayNightColor: const Color(0xFF1E1E1E),
         defaultDayNightTextColor: Colors.white,
         colonColor: Colors.white,
         showHeaderBullet: true,
@@ -89,23 +92,19 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('selected duration'),
-            SizedBox(
+            const Text('selected duration'),
+            const SizedBox(
               height: 10,
             ),
             Text('$startTime - $endTime'),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
-            ElevatedButton(
-                onPressed: () => showLightTimePicker(),
-                child: Text(' show light time picker')),
-            SizedBox(
+            ElevatedButton(onPressed: () => showLightTimePicker(), child: const Text(' show light time picker')),
+            const SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-                onPressed: () => showDarkTimePicker(),
-                child: Text(' show dark time picker')),
+            ElevatedButton(onPressed: () => showDarkTimePicker(), child: const Text(' show dark time picker')),
           ],
         ),
       ),

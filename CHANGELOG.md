@@ -1,3 +1,7 @@
+## 1.1.2
+
+* When the "OK" button is pressed, the developer can choose to either close the dialog or keep it open and added maxWidth param for dialog.
+
 ## 1.1.1
 
 * fix some warning
