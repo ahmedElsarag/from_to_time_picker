@@ -16,7 +16,7 @@ In the pubspec.yaml of your flutter project, add the following dependency:
 ```dart
 dependencies:
 ...
-from_to_time_picker: ^1.1.1
+from_to_time_picker: ^1.2.0
 
 ```
 

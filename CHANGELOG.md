@@ -1,3 +1,7 @@
+## 1.2.0
+
+* upgrade flutter sdk, upgrade intl, and fix overflow 
+
 ## 1.1.2
 
 * When the "OK" button is pressed, the developer can choose to either close the dialog or keep it open and added maxWidth param for dialog.
