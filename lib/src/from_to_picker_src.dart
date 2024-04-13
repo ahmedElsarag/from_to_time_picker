@@ -159,7 +159,7 @@ class FromToTimePicker extends StatefulWidget {
       this.colonColor = MColors.black,
       this.timeHintText = '00',
       this.doneTextColor = MColors.black,
-      this.dismissTextColor = MColors.black})
+      this.dismissTextColor = MColors.dark_red})
       : super(key: key);
 
   @override
@@ -190,108 +190,107 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
       ),
       elevation: 0,
       backgroundColor: Colors.transparent,
-      child: Stack(
-        children: [
-          Container(
-            height: widget.headerText != null
-                ? newScreenSize.height * (isNotMobile ? 0.33 : 0.26)
-                : newScreenSize.height * .24,
-            width: newScreenSize.width,
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(color: widget.dialogBackgroundColor, borderRadius: BorderRadius.circular(12)),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Visibility(
-                  visible: widget.headerText != null,
+      child: Container(
+        // height: widget.headerText != null
+        //     ? newScreenSize.height * (isNotMobile ? 0.33 : 0.26)
+        //     : newScreenSize.height * .24,
+        width: newScreenSize.width,
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(color: widget.dialogBackgroundColor, borderRadius: BorderRadius.circular(12)),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Visibility(
+                visible: widget.headerText != null,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Visibility(
+                          visible: widget.showHeaderBullet!,
+                          child: Container(
+                            width: 12,
+                            height: 12,
+                            margin: EdgeInsetsDirectional.only(end: newScreenSize.width * .02),
+                            decoration: BoxDecoration(
+                                color: widget.headerBulletColor,
+                                borderRadius: BorderRadius.circular(newScreenSize.width * .04)),
+                          ),
+                        ),
+                        Text(
+                          '${widget.headerText}',
+                          style: TextStyle(fontSize: 12, color: widget.headerTextColor),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: newScreenSize.height * .03,
+                    ),
+                  ],
+                ),
+              ),
+              Center(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    fromTimeItem(widget.fromHeadline!, newScreenSize),
+                    SizedBox(
+                      width: newScreenSize.width * .04,
+                    ),
+                    Container(
+                      padding: EdgeInsetsDirectional.only(top: newScreenSize.height * .02),
+                      height: newScreenSize.height * .12,
+                      alignment: Alignment.center,
+                      child: Text(
+                        ':',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: widget.colonColor),
+                      ),
+                    ),
+                    SizedBox(
+                      width: newScreenSize.width * .04,
+                    ),
+                    toTimeItem(widget.toHeadline!, newScreenSize)
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: newScreenSize.height * .04,
+              ),
+              Align(
+                  alignment: AlignmentDirectional.bottomEnd,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Visibility(
-                        visible: widget.showHeaderBullet!,
-                        child: Container(
-                          width: newScreenSize.width * .03,
-                          height: newScreenSize.width * .03,
-                          margin: EdgeInsetsDirectional.only(end: newScreenSize.width * .02),
-                          decoration: BoxDecoration(
-                              color: widget.headerBulletColor,
-                              borderRadius: BorderRadius.circular(newScreenSize.width * .04)),
-                        ),
+                      InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            widget.dismissText!,
+                            style: TextStyle(color: widget.dismissTextColor, fontSize: 16,fontWeight: FontWeight.w600),
+                          )),
+                      SizedBox(
+                        width: newScreenSize.width * .06,
                       ),
-                      Text(
-                        '${widget.headerText}',
-                        style: TextStyle(fontSize: 12, color: widget.headerTextColor),
-                      )
+                      InkWell(
+                          onTap: () {
+                            widget.onTab!(generate24HTime(isAmFrom, timePickerStartTime.toString()),
+                                generate24HTime(isAmTo, timePickerEndTime.toString()));
+                          },
+                          child: Text(
+                            widget.doneText!,
+                            style: TextStyle(color: widget.doneTextColor, fontSize: 16,fontWeight: FontWeight.w600),
+                          )),
                     ],
-                  ),
-                ),
-                SizedBox(
-                  height: newScreenSize.height * .03,
-                ),
-                Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          fromTimeItem(widget.fromHeadline!, newScreenSize),
-                          SizedBox(
-                            width: newScreenSize.width * .04,
-                          ),
-                          Container(
-                            padding: EdgeInsetsDirectional.only(top: newScreenSize.height * .02),
-                            height: newScreenSize.height * .12,
-                            alignment: Alignment.center,
-                            child: Text(
-                              ':',
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: widget.colonColor),
-                            ),
-                          ),
-                          SizedBox(
-                            width: newScreenSize.width * .04,
-                          ),
-                          toTimeItem(widget.toHeadline!, newScreenSize)
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+                  ))
+            ],
           ),
-          PositionedDirectional(
-              end: 20,
-              bottom: 10,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        widget.dismissText!,
-                        style: TextStyle(color: widget.dismissTextColor, fontSize: 16),
-                      )),
-                  SizedBox(
-                    width: newScreenSize.width * .06,
-                  ),
-                  InkWell(
-                      onTap: () {
-                        widget.onTab!(generate24HTime(isAmFrom, timePickerStartTime.toString()),
-                            generate24HTime(isAmTo, timePickerEndTime.toString()));
-                      },
-                      child: Text(
-                        widget.doneText!,
-                        style: TextStyle(color: widget.doneTextColor, fontSize: 16),
-                      )),
-                ],
-              ))
-        ],
+        ),
       ),
     );
   }
