@@ -269,7 +269,7 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                           },
                           child: Text(
                             widget.dismissText!,
-                            style: TextStyle(color: widget.dismissTextColor, fontSize: 16,fontWeight: FontWeight.w600),
+                            style: TextStyle(color: widget.dismissTextColor, fontSize: 16, fontWeight: FontWeight.w600),
                           )),
                       SizedBox(
                         width: newScreenSize.width * .06,
@@ -281,7 +281,7 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                           },
                           child: Text(
                             widget.doneText!,
-                            style: TextStyle(color: widget.doneTextColor, fontSize: 16,fontWeight: FontWeight.w600),
+                            style: TextStyle(color: widget.doneTextColor, fontSize: 16, fontWeight: FontWeight.w600),
                           )),
                     ],
                   ))

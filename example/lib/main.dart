@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:from_to_time_picker/from_to_time_picker.dart';
 
@@ -40,7 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (_) => FromToTimePicker(
               maxWidth: 600,
               onTab: (from, to) {
-                print('from $from to $to');
+                if (kDebugMode) {
+                  print('from $from to $to');
+                }
                 setState(() {
                   startTime = from.hour.toString();
                   endTime = to.hour.toString();
@@ -55,7 +58,9 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (_) => FromToTimePicker(
         onTab: (from, to) {
-          print('from $from to $to');
+          if (kDebugMode) {
+            print('from $from to $to');
+          }
           setState(() {
             startTime = from.hour.toString();
             endTime = to.hour.toString();
