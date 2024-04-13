@@ -1,3 +1,11 @@
+## 1.2.2
+
+* dart format 
+
+## 1.2.1
+
+* analysis
+
 ## 1.2.0
 
 * upgrade flutter sdk, upgrade intl, and fix overflow 

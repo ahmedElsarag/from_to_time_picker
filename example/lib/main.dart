@@ -105,11 +105,15 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(
               height: 40,
             ),
-            ElevatedButton(onPressed: () => showLightTimePicker(), child: const Text(' show light time picker')),
+            ElevatedButton(
+                onPressed: () => showLightTimePicker(),
+                child: const Text(' show light time picker')),
             const SizedBox(
               height: 20,
             ),
-            ElevatedButton(onPressed: () => showDarkTimePicker(), child: const Text(' show dark time picker')),
+            ElevatedButton(
+                onPressed: () => showDarkTimePicker(),
+                child: const Text(' show dark time picker')),
           ],
         ),
       ),

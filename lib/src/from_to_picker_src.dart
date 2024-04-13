@@ -193,7 +193,9 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
       child: Container(
         width: newScreenSize.width,
         padding: EdgeInsets.all(20),
-        decoration: BoxDecoration(color: widget.dialogBackgroundColor, borderRadius: BorderRadius.circular(12)),
+        decoration: BoxDecoration(
+            color: widget.dialogBackgroundColor,
+            borderRadius: BorderRadius.circular(12)),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -212,15 +214,18 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                           child: Container(
                             width: 12,
                             height: 12,
-                            margin: EdgeInsetsDirectional.only(end: newScreenSize.width * .02),
+                            margin: EdgeInsetsDirectional.only(
+                                end: newScreenSize.width * .02),
                             decoration: BoxDecoration(
                                 color: widget.headerBulletColor,
-                                borderRadius: BorderRadius.circular(newScreenSize.width * .04)),
+                                borderRadius: BorderRadius.circular(
+                                    newScreenSize.width * .04)),
                           ),
                         ),
                         Text(
                           '${widget.headerText}',
-                          style: TextStyle(fontSize: 12, color: widget.headerTextColor),
+                          style: TextStyle(
+                              fontSize: 12, color: widget.headerTextColor),
                         )
                       ],
                     ),
@@ -240,12 +245,16 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                       width: newScreenSize.width * .04,
                     ),
                     Container(
-                      padding: EdgeInsetsDirectional.only(top: newScreenSize.height * .02),
+                      padding: EdgeInsetsDirectional.only(
+                          top: newScreenSize.height * .02),
                       height: newScreenSize.height * .12,
                       alignment: Alignment.center,
                       child: Text(
                         ':',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: widget.colonColor),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: widget.colonColor),
                       ),
                     ),
                     SizedBox(
@@ -269,19 +278,28 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                           },
                           child: Text(
                             widget.dismissText!,
-                            style: TextStyle(color: widget.dismissTextColor, fontSize: 16, fontWeight: FontWeight.w600),
+                            style: TextStyle(
+                                color: widget.dismissTextColor,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600),
                           )),
                       SizedBox(
                         width: newScreenSize.width * .06,
                       ),
                       InkWell(
                           onTap: () {
-                            widget.onTab!(generate24HTime(isAmFrom, timePickerStartTime.toString()),
-                                generate24HTime(isAmTo, timePickerEndTime.toString()));
+                            widget.onTab!(
+                                generate24HTime(
+                                    isAmFrom, timePickerStartTime.toString()),
+                                generate24HTime(
+                                    isAmTo, timePickerEndTime.toString()));
                           },
                           child: Text(
                             widget.doneText!,
-                            style: TextStyle(color: widget.doneTextColor, fontSize: 16, fontWeight: FontWeight.w600),
+                            style: TextStyle(
+                                color: widget.doneTextColor,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600),
                           )),
                     ],
                   ))
@@ -302,7 +320,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
       children: [
         Text(
           headline,
-          style: TextStyle(color: widget.fromHeadlineColor, fontWeight: FontWeight.w600),
+          style: TextStyle(
+              color: widget.fromHeadlineColor, fontWeight: FontWeight.w600),
         ),
         SizedBox(
           height: size.height * .01,
@@ -324,7 +343,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                     onTap: () {
                       setState(() {
                         isAmFrom = true;
-                        fromTime = generate24HTime(isAmFrom, timePickerStartTime.toString());
+                        fromTime = generate24HTime(
+                            isAmFrom, timePickerStartTime.toString());
                       });
                     },
                     child: Container(
@@ -335,16 +355,22 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                         child: Text(
                           widget.dayText!,
                           style: TextStyle(
-                              color: isAmFrom ? widget.activeDayNightTextColor : widget.defaultDayNightTextColor,
+                              color: isAmFrom
+                                  ? widget.activeDayNightTextColor
+                                  : widget.defaultDayNightTextColor,
                               fontWeight: FontWeight.w700,
                               fontSize: 10),
                         ),
                       ),
                       decoration: BoxDecoration(
-                          color: isAmFrom == true ? widget.activeDayNightColor : widget.defaultDayNightColor,
+                          color: isAmFrom == true
+                              ? widget.activeDayNightColor
+                              : widget.defaultDayNightColor,
                           borderRadius: BorderRadiusDirectional.only(
-                              topStart: Radius.circular(widget.dayNightBorderRadius!),
-                              topEnd: Radius.circular(widget.dayNightBorderRadius!))),
+                              topStart:
+                                  Radius.circular(widget.dayNightBorderRadius!),
+                              topEnd: Radius.circular(
+                                  widget.dayNightBorderRadius!))),
                     ),
                   ),
                   SizedBox(
@@ -354,7 +380,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                     onTap: () {
                       setState(() {
                         isAmFrom = false;
-                        fromTime = generate24HTime(isAmFrom, timePickerStartTime.toString());
+                        fromTime = generate24HTime(
+                            isAmFrom, timePickerStartTime.toString());
                       });
                     },
                     child: Container(
@@ -365,16 +392,22 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                         child: Text(
                           widget.nightText!,
                           style: TextStyle(
-                              color: isAmFrom ? widget.defaultDayNightTextColor : widget.activeDayNightTextColor,
+                              color: isAmFrom
+                                  ? widget.defaultDayNightTextColor
+                                  : widget.activeDayNightTextColor,
                               fontWeight: FontWeight.w700,
                               fontSize: 10),
                         ),
                       ),
                       decoration: BoxDecoration(
-                          color: isAmFrom == true ? widget.defaultDayNightColor : widget.activeDayNightColor,
+                          color: isAmFrom == true
+                              ? widget.defaultDayNightColor
+                              : widget.activeDayNightColor,
                           borderRadius: BorderRadiusDirectional.only(
-                              bottomEnd: Radius.circular(widget.dayNightBorderRadius!),
-                              bottomStart: Radius.circular(widget.dayNightBorderRadius!))),
+                              bottomEnd:
+                                  Radius.circular(widget.dayNightBorderRadius!),
+                              bottomStart: Radius.circular(
+                                  widget.dayNightBorderRadius!))),
                     ),
                   )
                 ],
@@ -396,7 +429,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
       children: [
         Text(
           headline,
-          style: TextStyle(color: widget.toHeadlineColor, fontWeight: FontWeight.w600),
+          style: TextStyle(
+              color: widget.toHeadlineColor, fontWeight: FontWeight.w600),
         ),
         SizedBox(
           height: size.height * .01,
@@ -418,7 +452,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                     onTap: () {
                       setState(() {
                         isAmTo = true;
-                        toTime = generate24HTime(isAmTo, timePickerEndTime.toString());
+                        toTime = generate24HTime(
+                            isAmTo, timePickerEndTime.toString());
                       });
                     },
                     child: Container(
@@ -429,16 +464,22 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                         child: Text(
                           widget.dayText!,
                           style: TextStyle(
-                              color: isAmTo ? widget.activeDayNightTextColor : widget.defaultDayNightTextColor,
+                              color: isAmTo
+                                  ? widget.activeDayNightTextColor
+                                  : widget.defaultDayNightTextColor,
                               fontWeight: FontWeight.w700,
                               fontSize: 10),
                         ),
                       ),
                       decoration: BoxDecoration(
-                          color: isAmTo == true ? widget.activeDayNightColor : widget.defaultDayNightColor,
+                          color: isAmTo == true
+                              ? widget.activeDayNightColor
+                              : widget.defaultDayNightColor,
                           borderRadius: BorderRadiusDirectional.only(
-                              topStart: Radius.circular(widget.dayNightBorderRadius!),
-                              topEnd: Radius.circular(widget.dayNightBorderRadius!))),
+                              topStart:
+                                  Radius.circular(widget.dayNightBorderRadius!),
+                              topEnd: Radius.circular(
+                                  widget.dayNightBorderRadius!))),
                     ),
                   ),
                   SizedBox(
@@ -448,7 +489,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                     onTap: () {
                       setState(() {
                         isAmTo = false;
-                        toTime = generate24HTime(isAmTo, timePickerEndTime.toString());
+                        toTime = generate24HTime(
+                            isAmTo, timePickerEndTime.toString());
                       });
                     },
                     child: Container(
@@ -459,16 +501,22 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                         child: Text(
                           widget.nightText!,
                           style: TextStyle(
-                              color: isAmTo ? widget.defaultDayNightTextColor : widget.activeDayNightTextColor,
+                              color: isAmTo
+                                  ? widget.defaultDayNightTextColor
+                                  : widget.activeDayNightTextColor,
                               fontWeight: FontWeight.w700,
                               fontSize: 10),
                         ),
                       ),
                       decoration: BoxDecoration(
-                          color: isAmTo == true ? widget.defaultDayNightColor : widget.activeDayNightColor,
+                          color: isAmTo == true
+                              ? widget.defaultDayNightColor
+                              : widget.activeDayNightColor,
                           borderRadius: BorderRadiusDirectional.only(
-                              bottomEnd: Radius.circular(widget.dayNightBorderRadius!),
-                              bottomStart: Radius.circular(widget.dayNightBorderRadius!))),
+                              bottomEnd:
+                                  Radius.circular(widget.dayNightBorderRadius!),
+                              bottomStart: Radius.circular(
+                                  widget.dayNightBorderRadius!))),
                     ),
                   )
                 ],
@@ -509,7 +557,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                         if (timePickerStartTime < 12) {
                           setState(() {
                             timePickerStartTime++;
-                            fromTime = generate24HTime(isAmFrom, timePickerStartTime.toString());
+                            fromTime = generate24HTime(
+                                isAmFrom, timePickerStartTime.toString());
                           });
                         }
                       },
@@ -532,7 +581,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                         if (timePickerStartTime > 1) {
                           setState(() {
                             timePickerStartTime--;
-                            fromTime = generate24HTime(isAmFrom, timePickerStartTime.toString());
+                            fromTime = generate24HTime(
+                                isAmFrom, timePickerStartTime.toString());
                           });
                         }
                       },
@@ -568,12 +618,17 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                 transitionBuilder: (Widget child, Animation<double> animation) {
                   return ScaleTransition(scale: animation, child: child);
                 },
-                child: Text(timePickerStartTime == 0 ? widget.timeHintText! : timePickerStartTime.toString(),
+                child: Text(
+                    timePickerStartTime == 0
+                        ? widget.timeHintText!
+                        : timePickerStartTime.toString(),
                     key: ValueKey<String>(timePickerStartTime.toString()),
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
-                        color: timePickerStartTime == 0 ? widget.timeHintColor : widget.timeTextColor)),
+                        color: timePickerStartTime == 0
+                            ? widget.timeHintColor
+                            : widget.timeTextColor)),
               ),
             )
           ],
@@ -611,7 +666,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                         if (timePickerEndTime < 12) {
                           setState(() {
                             timePickerEndTime++;
-                            toTime = generate24HTime(isAmTo, timePickerEndTime.toString());
+                            toTime = generate24HTime(
+                                isAmTo, timePickerEndTime.toString());
                           });
                         }
                       },
@@ -634,7 +690,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                         if (timePickerEndTime > 1) {
                           setState(() {
                             timePickerEndTime--;
-                            toTime = generate24HTime(isAmTo, timePickerEndTime.toString());
+                            toTime = generate24HTime(
+                                isAmTo, timePickerEndTime.toString());
                           });
                         }
                       },
@@ -667,16 +724,21 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
                 alignment: Alignment.center,
                 child: AnimatedSwitcher(
                   duration: Duration(milliseconds: 300),
-                  transitionBuilder: (Widget child, Animation<double> animation) {
+                  transitionBuilder:
+                      (Widget child, Animation<double> animation) {
                     return ScaleTransition(scale: animation, child: child);
                   },
                   child: Text(
-                    timePickerEndTime == 0 ? widget.timeHintText! : timePickerEndTime.toString(),
+                    timePickerEndTime == 0
+                        ? widget.timeHintText!
+                        : timePickerEndTime.toString(),
                     key: ValueKey<String>(timePickerEndTime.toString()),
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
-                        color: timePickerEndTime == 0 ? widget.timeHintColor : widget.timeTextColor),
+                        color: timePickerEndTime == 0
+                            ? widget.timeHintColor
+                            : widget.timeTextColor),
                   ),
                 ))
           ],
@@ -688,7 +750,8 @@ class _FromToTimePickerState extends State<FromToTimePicker> {
   ///convert time from 12h to 24h format
   TimeOfDay generate24HTime(bool isAm, String hour) {
     initializeDateFormatting();
-    DateTime date = DateFormat("hh:mma", 'en').parse("$hour:00${isAm ? 'AM' : 'PM'}");
+    DateTime date =
+        DateFormat("hh:mma", 'en').parse("$hour:00${isAm ? 'AM' : 'PM'}");
 
     return TimeOfDay.fromDateTime(date);
   }
